@@ -1,0 +1,5 @@
+{% if archives %}
+	{% for archive in archives %}
+		<li><a href="{{archive.get_absolute_url}}" title="{{archive.year}}年{{archive.month}}月">{{archive.year}}年{{archive.month}}月({{archive.entrycount}})</a></li>
+	{% endfor%}
+{% endif%}      

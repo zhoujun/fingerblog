@@ -1,0 +1,48 @@
+{% extends "themes/default/base.html"%}
+{% block title %} {{entry.title|escape}} - {{blog.title|escape}} {% endblock %}
+{% block content %}
+	{% if entry %}
+		<div id="entrynavigation">
+		<a href="/">首页 </a>&raquo; 
+		<a href="/category/{{entry.category.slug}}">{{entry.category.name}}</a> &raquo; 
+		{{entry.title|escape}}
+		</div>
+		<div id="article" class="entry single">
+			<h1 class="entry-title">{{entry.title|escape}}</h1>
+			<div class="entry-meta">
+                <span class="author">{{entry.author}}</span>
+                <span class="date">{{entry.date|date:"Y-m-d H:i"}}</span>
+           	    <span class="view" id="post_views">浏览: {{entry.readtimes}}</span>
+           </div>
+           <div class="entry-content">
+           {{entry.content|safe}}
+           </div>
+           <div class="entry_extend">
+           		<div id="socialshare">分享到：
+	                <a class="sina-share" rel="nofollow" onclick="social_share(post_id,'sina')" href="#">新浪微博</a>
+                    <a class="douban-share" rel="nofollow" onclick="social_share(post_id,'douban')" href="#">豆瓣</a>
+                    <a class="kaixin-share" rel="nofollow" onclick="social_share(post_id,'kaixin')" href="#">开心网</a>
+                    <a class="renren-share" rel="nofollow" onclick="social_share(post_id,'renren')" href="#">人人网</a>
+                    <a class="qq-share" rel="nofollow" onclick="social_share(post_id,'qq')" href="#">QQ 空间</a>
+               </div>
+                <div id="copyright">                    
+					© 版权归作者所有，请勿转载本博客日志到任何博客或论坛。
+               </div>
+           </div>
+           <div class="postnavi">
+               <span class="pre">
+               {%if entry.prev%}
+               <a href="{{entry.prev.get_absolute_url}}">&laquo; {{entry.prev.title}}</a>
+			   {%else%}&laquo;没有了
+			   {%endif%}
+               </span>
+               
+               <span class="next">
+               {%if entry.next%}<a href="{{entry.next.get_absolute_url}}">{{entry.next.title}}&raquo;</a>
+			   {%else%}没有了&raquo;
+			   {%endif%}
+               </span>
+           </div>
+		</div>
+	{% endif%}
+{% endblock%}

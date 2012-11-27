@@ -1,0 +1,7 @@
+{% for menu_item in menus %}
+	{% ifequal current menu_item.link %}
+		<li id="menu-item" class="current-menu-item"><a href="/{{menu_item.link}}">{{menu_item.title}}</a></li>
+	{% else %}
+		<li id="menu-item"><a href="/{{menu_item.link}}">{{menu_item.title}}</a></li>
+	{% endifequal %}
+{% endfor%}

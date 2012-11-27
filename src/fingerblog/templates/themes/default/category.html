@@ -1,0 +1,41 @@
+{% extends "themes/default/base.html"%}
+{% load pagination %}
+{% block title %} {{category.name|escape}} - {{blog.title|escape}} {% endblock %}
+{% block content %}
+{% if entries %}
+		<div id="entrynavigation">
+		<a href="/">首页 </a>&raquo; 
+		{{category.name}} 
+		</div>
+	{% begin_pagination entries page %}
+		{% for entry in entries %}
+			<div id="article" class="entry">
+				<h2 class="entry-title">
+                <a href="{{entry.get_absolute_url|escape}}" title="{{entry.title|escape}}">{{entry.title|escape}}</a>
+                </h2>
+                                             日期：{{entry.date|date:"Y-m-d H:i"}}&nbsp;&nbsp;
+                                             分类：<a href="/category/{{entry.category.slug}}">{{entry.category.name}}</a>
+                <div class="entry-content">
+                	<p>
+                    {{entry.excerpt_content|safe}}
+                    </p>
+                </div>
+                <div class="entry-meta">
+	                <span class="clear"><a href="{{entry.get_absolute_url|escape}}" title="{{entry.title|escape}}">阅读全文>></a></span> 
+                    <span><a href="" class="commentlink" title="">评论: 3 </a></span>
+                    <span class="view" id="post_views">浏览: {{entry.readtimes}} </span>
+                    {%if entry.get_tags %}
+                    <span class="tag">Tags: 
+                    {% for tag in entry.get_tags %}
+                    	{% if forloop.last %}<a href="{{tag.get_absolute_url}}">{{tag.name}}</a>.
+                    	{% else %}<a href="{{tag.get_absolute_url}}">{{tag.name}}, 
+                    	{% endif%}
+                    {% endfor %}
+                    </span>     
+                    {%endif%}              
+                </div>
+			</div>
+		{% endfor%}
+	{% end_pagination %}
+{% endif%}
+{% endblock %}

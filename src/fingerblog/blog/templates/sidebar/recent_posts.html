@@ -1,0 +1,7 @@
+{% if recent_posts %}
+	{% for entry in recent_posts %}
+		<li><a href="{{entry.get_absolute_url|escape}}" title="{{entry.title|escape}}">{{entry.title|escape}}</a>({{entry.readtimes}})</li>
+	{% endfor%}
+{% endif%}
+
+            

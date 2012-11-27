@@ -1,0 +1,51 @@
+{% load sidebar %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{% block title %} {{ blog.title|escape}}{% endblock %}</title>
+<link type="text/css" rel="stylesheet" href="/themes/{{blog.theme_name}}/css/fingerblog.css" />
+<script type="text/javascript" src="/static/js/fingerblog.js"></script>
+</head>
+<body>
+	<div id="container">
+		<!-- Begin header -->
+    	<div id="header"><span style="font-size:36px; font-family:'Trebuchet MS'"><i>{{blog.title}}</i></span><br/>
+        	<span id="say">{{blog.subtitle|escape}}</span>
+        </div>
+        <!-- End header -->
+        
+        <!-- Begin navigation -->
+        <div id="navigation">
+        	<div class="menu-nav-container">
+            	<ul id="menu-nav" class="menu">
+                	<li id="menu-item" class="current-menu-item"><a href="/">首页/Home</a></li>
+                    {% get_menus %}
+                </ul>
+            </div>
+        </div>
+        <!-- End navigation -->
+        
+        <!-- Begin Content -->
+        <div id="content">
+        	{% block content %}{% endblock %} 
+        </div>
+        <!-- End Content -->
+        
+        <!-- Begin Sidebar -->
+        {% include "themes/default/sidebar.html" %}
+        <!-- End Sidebar -->
+        
+        <!-- Begin Footer -->
+        <div id="footer">
+      		<p style="float:right;">
+           		<a href="#" onclick="goTop();return false;">Top</a> 
+            </p>
+        	<p><span>© Copyright 2011 finger.zhou(at)gmail(dot)com 保留所有权利 </span></p>
+            当前版本: 1.0 <sup>TM</sup>
+        </div>
+        <!-- End Footer -->
+    </div>
+</body>
+</html>
+

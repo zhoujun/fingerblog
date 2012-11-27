@@ -1,0 +1,23 @@
+{% load sidebar %}
+<div id="sidebar">
+	<h3>最新文章/Articles</h3>
+    <ul>
+    	{% get_recent_posts %}
+    </ul>
+    <h3>最热文章/Hots</h3>
+    <ul>
+    	{% get_hot_posts %}
+    </ul>
+    <h3>分类/Categories</h3>
+    <ul>
+    	{% get_categories %}
+    </ul>
+    <h3>存档/Archives</h3>
+    <ul>
+    	{% get_archives %}
+    </ul>
+    <h3>链接/Blogroll</h3>
+    <ul>
+    	{% get_links %}
+    </ul>
+</div>

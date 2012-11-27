@@ -1,0 +1,35 @@
+<div id="paginator" class="pagenavi">
+	{% if paginator_page.has_previous %}
+		<a class="prev page-numbers" href="{{paginator_path}}?page={{paginator_page.previous_page_number}}" title="Previous">&laquo; Prev</a>
+		{% ifnotequal paginator_range.0 1%}
+			<a class="page-numbers" href="{{paginator_path}}?page=1" title="First">First</a>
+			<span class="page-numbers dots">...</span>
+		{% endifnotequal%}
+	{% endif%}
+	
+	{% for number in paginator_range %}
+		{% ifequal number paginator_current%}
+		<span class="page-numbers current">{{paginator_current}} </span>
+		{% else %}<a class="page-numbers" href="{{paginator_path}}?page={{number}}">{{number}}</a>
+		{% endifequal%}
+	{% endfor%}
+	
+	{% if paginator_page.has_next %}
+		{% ifnotequal paginator_current paginator_next_page_number%}
+			<span class="page-numbers dots">...</span>
+   			<a class="page-numbers" href="{{paginator_path}}?page={{paginator_page.paginator.num_pages}}" title="Last">Last </a>
+		{% endifnotequal%}
+		<a class="next page-numbers" href="{{paginator_path}}?page={{paginator_page.next_page_number}}" title="Next">Next &raquo;</a>
+	{% endif%}
+</div>
+
+
+
+
+
+
+
+
+
+
+
